@@ -1,22 +1,10 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star, MapPin, Clock } from 'lucide-react';
 import StatusBadge from './StatusBadge';
+import { Doctor } from '@/components/search/SearchResults';
 
-type DoctorCardProps = {
-  id: string;
-  name: string;
-  specialty: string;
-  location: string;
-  rating: number;
-  reviews: number;
-  experience: number;
-  price: number;
-  image: string;
-  isLive?: boolean;
-  nextAvailable?: string;
-};
+type DoctorCardProps = Doctor;
 
 const DoctorCard = ({
   id,

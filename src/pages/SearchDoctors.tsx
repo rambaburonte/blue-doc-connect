@@ -5,7 +5,7 @@ import AppHeader from '@/components/AppHeader';
 import BottomNavigation from '@/components/BottomNavigation';
 import { allDoctors, searchSpecialties } from '@/data/doctorsData';
 import SearchHeader from '@/components/search/SearchHeader';
-import SpecialtyFilter from '@/components/search/SpecialtyFilter';
+import SearchFilters from '@/components/search/SearchFilters';
 import SearchResults from '@/components/search/SearchResults';
 
 const SearchDoctors = () => {
@@ -20,7 +20,6 @@ const SearchDoctors = () => {
     const specialty = searchParams.get('specialty');
     const status = searchParams.get('status');
     const sort = searchParams.get('sort');
-    const featured = searchParams.get('featured');
     
     if (specialty) {
       setSelectedSpecialty(specialty);
@@ -36,14 +35,14 @@ const SearchDoctors = () => {
     }
     
     if (status === 'live') {
-      filteredDoctors = filteredDoctors.filter(doctor => doctor.isLive);
+      filteredDoctors = filteredDoctors.filter(doctor => 
+        'isLive' in doctor && doctor.isLive === true
+      );
     }
     
     if (sort === 'popular') {
       filteredDoctors.sort((a, b) => b.rating - a.rating);
     }
-    
-    // For demo purposes, consider all doctors as featured if the featured param exists
     
     setDoctors(filteredDoctors);
   }, [searchParams]);
@@ -94,10 +93,10 @@ const SearchDoctors = () => {
             setShowFilters={setShowFilters}
           />
           
-          <SpecialtyFilter 
+          <SearchFilters 
             specialties={searchSpecialties}
             selectedSpecialty={selectedSpecialty}
-            onChange={filterBySpecialty}
+            onSpecialtyChange={filterBySpecialty}
           />
           
           <SearchResults doctors={doctors} />
