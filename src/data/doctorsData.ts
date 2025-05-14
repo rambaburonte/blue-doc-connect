@@ -1,4 +1,3 @@
-
 // Sample data for doctors
 export const specialties = [
   { id: 'dentist', name: 'Dentist', icon: '🦷' },
@@ -72,5 +71,43 @@ export const featureDoctors = [
     experience: 6,
     price: 25,
     image: 'https://randomuser.me/api/portraits/women/65.jpg',
+  }
+];
+
+// Filter specialties for search page
+export const searchSpecialties = [
+  { id: 'all', name: 'All' },
+  { id: 'dentist', name: 'Dentist' },
+  { id: 'cardiology', name: 'Cardiology' },
+  { id: 'medicine', name: 'Medicine' },
+  { id: 'pathology', name: 'Pathology' },
+  { id: 'cancer', name: 'Cancer' },
+];
+
+// All doctors for search page
+export const allDoctors = [
+  ...popularDoctors,
+  ...featureDoctors,
+  {
+    id: '6',
+    name: 'Dr. Ether Wall',
+    specialty: 'Specialist Cancer',
+    location: 'Medical College Hospital, Kolkata',
+    rating: 4.5,
+    reviews: 59,
+    experience: 15,
+    price: 45,
+    image: 'https://randomuser.me/api/portraits/women/68.jpg',
+  },
+  {
+    id: '7',
+    name: 'Dr. Blessing',
+    specialty: 'Dentist Specialist',
+    location: 'City Dental Hospital, Park Street',
+    rating: 4.2,
+    reviews: 38,
+    experience: 3,
+    price: 22,
+    image: 'https://randomuser.me/api/portraits/men/72.jpg',
   }
 ];
